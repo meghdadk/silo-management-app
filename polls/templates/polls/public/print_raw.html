@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <title>Receipt</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+  <!-- Load paper.css for happy printing -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+
+
+  <!-- Set page size here: A5, A4 or A3 -->
+  <!-- Set also "landscape" if you need -->
+  <style>@page { size: A5 landscape }</style>
+  
+  <style type="text/css">
+    body{
+        font-family:Tahoma, Geneva, sans-serif;
+        direction:rtl;
+        font-size:12px;
+    }
+    @font-face {
+        font-family:'BZar';/*تعریف یک نام برای فونت*/
+        src:url('font/BZar.eot');/*اکسپلورر 9 به بعد*/
+        src:local('bZar'),/*بررسی نصب بودن فونت در سیستم کاربر*/
+            local('b Zar'),/*برای برخی از مرورگرها مانند سافاری*/
+            url('font/BZar.eot?#iefix') format('embedded-opentype'),/*هک برای اکسپلورر 8 و ماقبل*/
+            url('font/BZar.woff') format('woff'),/*مرورگر های جدید*/
+            url('font/BZar.ttf') format('truetype'),/*تمام مرورگرها به جزء اکسپلورر*/
+            url('font/BZar.svg#BZar') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
+        font-style:normal;
+        font-weight:normal;
+    }
+    .post-titr p{
+        font-family:BZar, Tahoma, Geneva, sans-serif;
+        display:block;
+        font-size:16px;    
+    }
+</style>
+
+  <!-- Custom styles for this document -->
+  <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body class="A5 landscape">
+
+  <!-- Each sheet element should have the class "sheet" -->
+  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+  <section class="sheet">
+ <table style="width:100%;margin-top:5mm;margin-left:3mm;margin-right:3mm;;border:0.5px solid black;">
+  
+  <tr>
+    <th style="text-align:right;"><img  src="{% static 'build/images/Logo.png' %}" alt="..." style="width:150px; height:100px;"></th>
+    <th style="text-align:center;">
+    <table style="width:100%;text-align:center">
+    <tr><td><h2 style="width:100%;text-align:center;margin-top:0">رسید دریافت محصول</h2></td></tr>
+    <tr><td><h3 style="width:100%;text-align:center;margin-top:0;">شرکت سیلوی خوشه طلای لاجان</h3></td></tr>
+    <tr><td>پیرانشهر - کیلومتر یک روستای اشنوزنگ | 0445-8443394</td></tr>
+    </table>
+    </th>
+    <th style="text-align:right;">
+    <table style="width:100%;text-align:right">
+    <tr>
+    <td><h4 id="recieptnumber" style="width:100%;text-align:right;margin-top:0"></h4></td></tr>
+    <td><h4 id="date" style="width:100%;text-align:right;margin-top:0">تاریخ :1399/12/12 14:54:54</h4></td></tr>
+    <td><h4 id="user" style="width:100%;text-align:right;margin-top:0">متصدی: کاربر شماره یک</h4></td></tr>
+    </table>
+    </th>
+  </tr>
+ </table>
+ 
+  <table style="width:100%;margin-top:3mm;margin-right:3mm;margin-left:3mm;;border:0.5px solid black;">
+  
+  <tr style="height:7mm;">
+    <td>مشتری: </td>
+    <td id="customername" ></td>
+    <td>کد ملی: </td>
+    <td id="nationalid"></td>
+    <td>نام پدر: </td>
+    <td id="fathername"></td>
+    <td>راننده: </td>
+    <td id="driver"></td>
+
+  </tr>
+  <tr style="height:7mm;">
+    <td>خودرو: </td>
+    <td id="car"></td>
+    <td>محصول: </td>
+    <td id="crop"></td>
+    <td>تلفن: </td>
+    <td id="mobile"></td>
+    <td>آدرس: </td>
+    <td id="location"></td>
+
+  </tr style="height:7mm;">
+    <td>شماره حساب: </td>
+    <td id="bank"></td>
+
+  </tr>
+ </table>
+ 
+ 
+ <table style="width:100%;margin-top:3mm;margin-right:3mm;margin-left:3mm;;border:1px solid black;">
+  
+  <tr style="height:7mm;">
+    <th>ردیف </th>
+    <th>شماره پلاک</th>
+    <th>زمان ورود</th>
+    <th>زمان خروچ</th>
+    <th>وزن پر</th>
+    <th>وزن خالی</th>
+    <th>وزن خالص</th>
+
+  </tr>
+  
+  <tr style="height:7mm;text-align:center">
+    <td id="row"></td>
+    <td id="carid"></td>
+    <td id="enterdate"></td>
+    <td id="exitdate"></td>
+    <td id="loadedweight"></td>
+    <td id="unloadedweight"></td>
+    <td id="pureweight"></td>
+
+  </tr>
+
+ </table>
+ 
+  <table style="width:100%;margin-top:7mm;margin-left:3mm;margin-right:3mm;">
+
+  <tr>
+    <th style="text-align:right;"></th>
+    <th id="idphotocell" style="text-align:center;">
+    <img src="data:image/png;base64,{{ image }}" style="width:300px; height:200px;">
+    </th>
+    <th style="text-align:right;"></th>
+  </tr>
+ </table>
+ 
+    
+
+  </section>
+
+
+
+<script src="{% static 'vendors/jquery/dist/jquery.min.js' %}" ></script>
+<!-- Bootstrap -->
+<script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+<!-- FastClick -->
+<script src="{% static 'vendors/fastclick/lib/fastclick.js' %}" ></script>
+
+<script src="{% static 'build/js/custom.min.js' %}" ></script>
+
+<script type="text/javascript">
+
+$(document).ready(lajan.silo () {
+   var url_string = window.location.href
+   
+   var code = url_string.split('/')[5];
+   var reciept = url_string.split('/')[7];
+   printtype = ""
+   if (reciept == "0"){
+       printtype = "print_temp_invoice/"+code;
+   } else if (reciept == "1"){
+	   printtype = "print_other_invoice/" + code;
+   }
+   else {
+       printtype = 'print_full_invoice/'+reciept;
+   }
+   var id = ""; 
+   var port = window.location.port || 8000;
+   $.ajax({
+    url:            'http://localhost:' + port + '/polls/' + printtype,
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      document.getElementById('recieptnumber').innerHTML =  "شماره رسید: " + result.reciept;
+      document.getElementById('enterdate').innerHTML = result.enterdate;
+      document.getElementById('exitdate').innerHTML = result.exitdate;
+      document.getElementById('driver').innerHTML = '<b>' + result.driver + '</b>';
+      document.getElementById('carid').innerHTML = result.vnumber;
+      document.getElementById('nationalid').innerHTML = '<b>' +result.id+ '</b>';
+      id = result.id;
+      document.getElementById('customername').innerHTML = '<b>' +result.fname + ' ' +  result.lname+ '</b>';
+      document.getElementById('mobile').innerHTML = '<b>' +result.mobile+ '</b>';
+      document.getElementById('fathername').innerHTML = '<b>' +result.faname+ '</b>';
+      document.getElementById('bank').innerHTML = '<b>' +result.bank+ '</b>';
+      document.getElementById('loadedweight').innerHTML = result.loadedweight;
+      document.getElementById('unloadedweight').innerHTML = result.unloadedweight;
+      document.getElementById('pureweight').innerHTML = result.pureweight
+      document.getElementById('crop').innerHTML = '<b>' +result.loadtype+ '</b>';
+      document.getElementById('car').innerHTML = '<b>' +result.vtype+ '</b>';
+      document.getElementById('location').innerHTML = '<b>' +result.location+ '</b>';
+    }
+  });
+  
+  let today = new Date().toLocaleDateString('fa-IR');
+  document.getElementById('date').innerHTML = "تاریخ: " + today;
+
+   
+});
+
+</script>
+
+</body>
+</html>

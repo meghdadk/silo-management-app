@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="fontiran.com:license" content="Y68A9">
+    <link rel="icon" href="{% static "build/images/Logo.png" %}" type="image/ico"/>
+    <title>»Lajan Sillou! | لاجان سیلو </title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}"  rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}"  rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'build/css/autocomplete.css' %}" rel="stylesheet">
+</head>
+<!-- /header content -->
+<body class="nav-md">
+
+
+ 
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        
+
+        <div class="clearfix"></div>
+
+ 
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>نتایج جستجو</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">تنظیمات 1</a>
+                                    </li>
+                                    <li><a href="#">تنظیمات 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+      
+                        <table id="resultstable" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" id="check-all" class="flat"></th>
+                                <th>کدملی</th>
+                                <th>پلاک خودرو</th>
+                                <th>نام</th>
+                                <th>نام پدر</th>
+                                <th>آدرس</th>
+                                <th>شماره حساب</th>
+                            </tr>
+                            </thead>
+
+
+                            <tbody id="fastresultbody">
+                            
+                            <tr>
+                                <td><input type="checkbox" class="flat" name="table_records"></td>
+                                <td>Quinn Flynn</td>
+                                <td>Support Lead</td>
+                                <td>Edinburgh</td>
+                                <td>22</td>
+                                <td>2013/03/03</td>
+                                <td>$342,000</td>
+                            </tr>
+               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+<!-- jQuery -->
+<script src="{% static 'vendors/jquery/dist/jquery.min.js' %}" ></script>
+<!-- Bootstrap -->
+<script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+<!-- FastClick -->
+<script src="{% static 'vendors/fastclick/lib/fastclick.js' %}" ></script>
+<!-- NProgress -->
+<script src="{% static 'vendors/nprogress/nprogress.js' %}" ></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}" ></script>
+<!-- iCheck -->
+<script src="{% static 'vendors/iCheck/icheck.min.js' %}" ></script>
+
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'vendors/moment/min/moment.min.js' %}" ></script>
+
+<script src="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.js' %}" ></script>
+
+<!-- Chart.js -->
+<script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}" ></script>
+<!-- jQuery Sparklines -->
+<script src="{% static 'vendors/jquery-sparkline/dist/jquery.sparkline.min.js' %}" ></script>
+<!-- gauge.js -->
+<script src="{% static 'vendors/gauge.js/dist/gauge.min.js' %}" ></script>
+<!-- Skycons -->
+<script src="{% static 'vendors/skycons/skycons.js' %}" ></script>
+<!-- Flot -->
+<script src="{% static 'vendors/Flot/jquery.flot.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.pie.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.time.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.stack.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.resize.js' %}" ></script>
+<!-- Flot plugins -->
+<script src="{% static 'vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}" ></script>
+<script src="{% static 'vendors/flot-spline/js/jquery.flot.spline.min.js' %}" ></script>
+<script src="{% static 'vendors/flot.curvedlines/curvedLines.js' %}" ></script>
+<!-- DateJS -->
+<script src="{% static 'vendors/DateJS/build/production/date.min.js' %}" ></script>
+<!-- JQVMap -->
+<script src="{% static 'vendors/jqvmap/dist/jquery.vmap.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}" ></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'build/js/custom.min.js' %}" ></script>
+
+<script type="text/javascript">
+
+$(document).ready(lajan.silo () {
+   var url_string = window.location.href
+   
+   var id = url_string.split('/')[5];
+   var carid = url_string.split('/')[5];
+   var name = url_string.split('/')[7];
+   printtype = ""
+   
+   var port = window.location.port || 8000;
+   var id = ""; 
+   $.ajax({
+    url:            'http://localhost:' + port + '/polls/getfastresults/' + id + '/' + carid + '/' + name,
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      document.getElementById('recieptnumber').innerHTML =  "شماره رسید: " + result.reciept;
+      document.getElementById('enterdate').innerHTML = result.enterdate;
+      document.getElementById('exitdate').innerHTML = result.exitdate;
+      document.getElementById('driver').innerHTML = '<b>' + result.driver + '</b>';
+      document.getElementById('carid').innerHTML = result.vnumber;
+      document.getElementById('nationalid').innerHTML = '<b>' +result.id+ '</b>';
+      id = result.id;
+      document.getElementById('customername').innerHTML = '<b>' +result.fname + ' ' +  result.lname+ '</b>';
+      document.getElementById('mobile').innerHTML = '<b>' +result.mobile+ '</b>';
+      document.getElementById('fathername').innerHTML = '<b>' +result.faname+ '</b>';
+      document.getElementById('bank').innerHTML = '<b>' +result.bank+ '</b>';
+      document.getElementById('loadedweight').innerHTML = result.loadedweight;
+      document.getElementById('unloadedweight').innerHTML = result.unloadedweight;
+      document.getElementById('pureweight').innerHTML = result.pureweight
+      document.getElementById('crop').innerHTML = '<b>' +result.loadtype+ '</b>';
+      document.getElementById('car').innerHTML = '<b>' +result.vtype+ '</b>';
+      document.getElementById('location').innerHTML = '<b>' +result.location+ '</b>';
+    }
+  });
+  
+  let today = new Date().toLocaleDateString('fa-IR');
+  document.getElementById('date').innerHTML = "تاریخ: " + today;
+
+   
+});
+
+</script>
+
+
+
+
+</body>
+</html>

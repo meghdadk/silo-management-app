@@ -1,0 +1,1 @@
+This is a web application using django developed to manage the operations in a Wheat Silo

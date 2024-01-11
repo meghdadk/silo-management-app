@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="fontiran.com:license" content="Y68A9">
+    <link rel="icon" href="{% static "build/images/Logo.png" %}" type="image/ico"/>
+    <title> لاجان سیلو | مدارک </title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}"  rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}"  rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'build/css/autocomplete.css' %}" rel="stylesheet">
+
+
+	<!-- iCheck -->
+	<link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+	<!-- Datatables -->
+	<link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+
+</head>
+<!-- /header content -->
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+    <div class="col-md-3 left_col hidden-print">
+            <!-- left panel -->
+         <div class="left_col scroll-view">
+                
+                <div class="navbar nav_title" style="border: 0;">
+                    <a  class="site_title"><i class="fa fa-paw"></i> <span>لاجان سیلو</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        
+                        <img  src="{% static 'build/images/Farmer1.png' %}" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>خوش آمدید</span>
+                        <h2>کاربر اول</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>عمومی</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-home"></i> خانه <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+								    
+                                    <li><a id="gotodashboardlink" href="#" onclick="gotodashboard();return false;"> باسکول </a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> گزارشات <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#" onclick="gotoreports();return false;"> گزارش گیری </a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-upload"></i> بارگذاری فایل <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#"  onclick="gotouploads();return false;"> > مدرک شناسایی </a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-pencil"></i> ثبت اطلاعات <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href=""> ثبت کارخانه </a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="تنظیمات">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="تمام صفحه" onclick="toggleFullScreen();">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="قفل" class="lock_btn">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="خروج" href="." >
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div> <!--left-col scroll-view -->
+         
+
+    </div> <!--col-md-3 left-col hidden-print-->         
+    
+    <!-- top navigation -->
+    <div class="top_nav hidden-print">
+        <div class="nav_menu">
+            <nav>
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right" >
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">
+                            <img src="{% static 'build/images/Farmer1.png' %}" alt="">کاربر اول
+                            
+                        </a>
+                       
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div> <!-- /top navigation -->
+
+    <!-- /header content -->
+        
+        
+        
+    <div class="right_col" role="main">
+    
+
+
+    <div class="row">
+
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>ثبت اطلاعات کارخانه</h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+							   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">تنظیمات 1</a>
+								</li>
+								<li><a href="#">تنظیمات 2</a>
+								</li>
+							</ul>
+						</li>
+						<li><a class="close-link"><i class="fa fa-close"></i></a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				
+
+                    <div class="x_content">
+                        <br/>
+						
+                         <form id="infoform" "data-parsley-validate" class="form-horizontal form-label-left"  autocomplete="off">
+                        
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="factoryid"> شناسه
+                                    <span id="factoryidreq" class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="number" id="factoryid" required="required"
+                                           class="form-control col-md-7 col-xs-12" onkeyup="searchfactory();">
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12 autocomplete" for="factoryname">  نام
+                                     <span id="factorynamereq" class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="factoryname" name="factoryname" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address"> آدرس 
+                                     <span id="addressnamereq" class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="address" name="address" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile"> تلفن 
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="factoryphone" name="factoryphone"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                
+                            </div>
+                            
+
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+								<div class="col-md-4 col-sm-4 col-xs-4 "></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 ">
+                                    <button type='button' onclick="register_factory();" style="width: 80px;" class="btn btn-success">ثبت</button>
+									<button type='button' onclick="edit_factory();" style="width: 80px;" class="btn btn-info">ویرایش</button>
+                                </div>
+								<div class="col-md-4 col-sm-4 col-xs-4 "></div>
+                            </div>
+
+                        </form>
+						
+                    </div>	
+				
+				
+				
+			</div>
+		</div>
+
+    </div>
+    
+
+    
+    </div> <!-- right_col main -->
+    
+    </div> <!-- main container -->
+	
+	
+</div>
+<!--container body -->
+
+
+
+
+
+<div id="lock_screen">
+    <table>
+        <tr>
+            <td>
+                <div class="clock"></div>
+                <span class="unlock">
+                    <span class="fa-stack fa-5x">
+                      <i class="fa fa-square-o fa-stack-2x fa-inverse"></i>
+                      <i id="icon_lock" class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- jQuery -->
+<script src="{% static 'vendors/jquery/dist/jquery.min.js' %}" ></script>
+<!-- Bootstrap -->
+<script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+<!-- FastClick -->
+<script src="{% static 'vendors/fastclick/lib/fastclick.js' %}" ></script>
+<!-- NProgress -->
+<script src="{% static 'vendors/nprogress/nprogress.js' %}" ></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}" ></script>
+<!-- iCheck -->
+<script src="{% static 'vendors/iCheck/icheck.min.js' %}" ></script>
+
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'vendors/moment/min/moment.min.js' %}" ></script>
+
+<script src="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.js' %}" ></script>
+
+<!-- Chart.js -->
+<script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}" ></script>
+<!-- jQuery Sparklines -->
+<script src="{% static 'vendors/jquery-sparkline/dist/jquery.sparkline.min.js' %}" ></script>
+<!-- gauge.js -->
+<script src="{% static 'vendors/gauge.js/dist/gauge.min.js' %}" ></script>
+<!-- Skycons -->
+<script src="{% static 'vendors/skycons/skycons.js' %}" ></script>
+<!-- Flot -->
+<script src="{% static 'vendors/Flot/jquery.flot.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.pie.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.time.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.stack.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.resize.js' %}" ></script>
+<!-- Flot plugins -->
+<script src="{% static 'vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}" ></script>
+<script src="{% static 'vendors/flot-spline/js/jquery.flot.spline.min.js' %}" ></script>
+<script src="{% static 'vendors/flot.curvedlines/curvedLines.js' %}" ></script>
+<!-- DateJS -->
+<script src="{% static 'vendors/DateJS/build/production/date.min.js' %}" ></script>
+<!-- JQVMap -->
+<script src="{% static 'vendors/jqvmap/dist/jquery.vmap.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}" ></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'build/js/custom.min.js' %}" ></script>
+
+
+<!-- iCheck -->
+<script src="{% static 'vendors/iCheck/icheck.min.js' %}"></script>
+
+
+
+
+<script type="text/javascript">
+
+document.getElementById('fileselect').onchange = lajan.silo () {
+  document.getElementById("fileselectlabel").innerHTML =  this.value.split('\\')[2];
+};
+
+lajan.silo gotodashboard(){
+var port = window.location.port || 8000;
+window.open("http://localhost:" + port + "/polls/","_self");
+}
+
+lajan.silo gotoreports(){
+var port = window.location.port || 8000;
+window.open("http://localhost:" + port + "/polls/report_page/","_self");
+}
+
+lajan.silo gotouploads(){
+var port = window.location.port || 8000;
+window.open("http://localhost:" + port + "/polls/upload_idphoto/","_self")
+}
+
+lajan.silo searchfactory() {
+  var id = document.getElementById('factoryid').value
+  var port = window.location.port || 8000;
+  $.ajax({
+    url:            'http://localhost:' + port + '/polls/searchfactoryid/'+id.toString(),
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      $("#factoryname").val(result.name);
+      $("#address").val(result.address);
+      $("#factoryphone").val(result.phone);
+      
+    }
+  });
+};
+
+lajan.silo register_factory(){
+	var port = window.location.port || 8000;
+	$.ajax({
+		url: 'http://localhost:' + port + '/polls/register_factory/',
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+		async: false,
+		contentType: 'application/json',
+		data: JSON.stringify({factoryid: $("#factoryid").val(), factoryname: $("#factoryname").val(), address: $("#address").val(), factoryphone: $("#factoryphone").val()}),
+		success: lajan.silo (json) {
+			alert(json.msg);
+		},
+		errof: lajan.silo(xhr,errmsg,err){
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
+	location.reload();
+	window.close()
+    
+};
+
+lajan.silo edit_factory(){
+	var id = document.getElementById('factoryid').value;
+	var port = window.location.port || 8000;
+	$.ajax({
+		url: 'http://localhost:' + port + '/polls/edit_factory/',
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+		async: false,
+		contentType: 'application/json',
+		data: JSON.stringify({factoryid: $("#factoryid").val(), factoryname: $("#factoryname").val(), address: $("#address").val(), factoryphone: $("#factoryphone").val()}),
+		success: lajan.silo (json) {
+			alert(json.msg);
+		},
+		errof: lajan.silo(xhr,errmsg,err){
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
+	window.close()
+    
+};
+
+$(document).ready(lajan.silo () {var i;})
+
+</script>
+
+
+
+</body>
+</html>
+    

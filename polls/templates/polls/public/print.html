@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <title>Receipt</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+  <!-- Load paper.css for happy printing -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}"  rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}"  rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+
+
+  <!-- Set page size here: A5, A4 or A3 -->
+  <!-- Set also "landscape" if you need -->
+  <style>@page { size: A5 landscape }</style>
+  
+  <style type="text/css">
+	body{
+		font-family:Tahoma, Geneva, sans-serif;
+		direction:rtl;
+		font-size:12px;
+	}
+	@font-face {
+		font-family:'BZar';/*تعریف یک نام برای فونت*/
+		src:url('font/BZar.eot');/*اکسپلورر 9 به بعد*/
+		src:local('bZar'),/*بررسی نصب بودن فونت در سیستم کاربر*/
+			local('b Zar'),/*برای برخی از مرورگرها مانند سافاری*/
+			url('font/BZar.eot?#iefix') format('embedded-opentype'),/*هک برای اکسپلورر 8 و ماقبل*/
+			url('font/BZar.woff') format('woff'),/*مرورگر های جدید*/
+			url('font/BZar.ttf') format('truetype'),/*تمام مرورگرها به جزء اکسپلورر*/
+			url('font/BZar.svg#BZar') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
+		font-style:normal;
+		font-weight:normal;
+	}
+	.post-titr p{
+		font-family:BZar, Tahoma, Geneva, sans-serif;
+		display:block;
+		font-size:16px;    
+	}
+</style>
+
+  <!-- Custom styles for this document -->
+  <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body class="A5 landscape">
+
+  <!-- Each sheet element should have the class "sheet" -->
+  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+  <section class="sheet">
+ <table style="width:100%;margin-top:5mm;margin-left:3mm;margin-right:3mm;;border:0.5px solid black;">
+  
+  <tr>
+    <th style="text-align:right;"><img  src="{% static 'build/images/inbox.png' %}" alt="..." style="height: 50%;width:auto"></th>
+    <th style="text-align:center;">
+	<table style="width:100%;text-align:center">
+	<tr><td><h2 style="width:100%;text-align:center;margin-top:0">رسید دریافت محصول</h2></td></tr>
+	<tr><td><h3 style="width:100%;text-align:center;margin-top:0;">شرکت سیلوی خوشه طلای لاجان</h3></td></tr>
+	<tr><td>پیرانشهر - کیلومتر یک روستای اشنوزنگ | 0445-8443394</td></tr>
+	</table>
+	</th>
+    <th style="text-align:right;">
+	<table style="width:100%;text-align:right">
+	<tr>
+	<td>
+
+		<label style="display:inline-block;float:right;" >نام: 
+
+		</label>
+		<input type="text"></input>
+
+	</td></tr>
+	<td>
+			<label style="display:inline-block;float:right;" >تاریخ: 
+
+		</label>
+		<input type="text"></input>
+	</td></tr>
+	<td>
+	</td></tr>
+	</table>
+	</th>
+  </tr>
+ </table>
+ 
+  <table style="width:100%;margin-top:3mm;margin-right:3mm;margin-left:3mm;;border:0.5px solid black;">
+  
+  <tr style="height:7mm;">
+    <td>مشتری: </td>
+	<td></td>
+	<td>کد ملی: </td>
+	<td></td>
+	<td>نام پدر: </td>
+	<td></td>
+	<td>راننده: </td>
+	<td></td>
+
+  </tr>
+  <tr style="height:7mm;">
+    <td>خودرو: </td>
+	<td></td>
+	<td>محصول: </td>
+	<td></td>
+	<td>تلفن: </td>
+	<td></td>
+	<td>آدرس: </td>
+	<td></td>
+
+  </tr style="height:7mm;">
+    </tr>
+    <tr>
+    <td>شماره حساب: </td>
+	<td></td>
+
+  </tr>
+ </table>
+ 
+ 
+ <table style="width:100%;margin-top:3mm;margin-right:3mm;margin-left:3mm;;border:1px solid black;">
+  
+  <tr style="height:7mm;">
+    <th>ردیف </th>
+	<th>شماره پلاک</th>
+	<th>زمان ورود</th>
+	<th>زمان خروچ</th>
+	<th>وزن پر</th>
+	<th>وزن خالی</th>
+	<th>وزن خالص</th>
+
+  </tr>
+  
+  <tr style="height:7mm;text-align:center">
+    <td >1</td>
+	<td >24ت879</td>
+	<td >1399/05/13 12:45:18</td>
+	<td >1399/05/13 12:45:18</td>
+	<td >13456</td>
+	<td >10000</td>
+	<td >345677777777777</td>
+
+  </tr>
+
+ </table>
+ 
+  <table style="width:100%;margin-top:7mm;margin-left:3mm;margin-right:3mm;">
+
+  <tr>
+    <th style="text-align:right;"></th>
+    <th style="text-align:center;">
+	<img src="{% static 'build/images/test.jpeg' %}" alt="..." style="width:300px; height:200px;">
+	</th>
+    <th style="text-align:right;"></th>
+  </tr>
+ </table>
+ 
+    
+
+  </section>
+
+</body>
+
+</html>

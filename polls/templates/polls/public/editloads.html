@@ -1,0 +1,678 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="fontiran.com:license" content="Y68A9">
+    <link rel="icon" href="{% static "build/images/Logo.png" %}" type="image/ico"/>
+    <title> لاجان سیلو | ویرایش </title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}"  rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}"  rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'build/css/autocomplete.css' %}" rel="stylesheet">
+</head>
+<!-- /header content -->
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+    <div class="col-md-3 left_col hidden-print">
+            <!-- left panel -->
+         <div class="left_col scroll-view">
+                
+                <div class="navbar nav_title" style="border: 0;">
+                    <a class="site_title"><i class="fa fa-paw"></i> <span>لاجان سیلو</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        
+                        <img  src="{% static 'build/images/img.jpg' %}" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>خوش آمدید,</span>
+                        <h2>کاربر اول</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>صفحه ویرایش مقادیر باسکول</h3>
+
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="تنظیمات">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="تمام صفحه" onclick="toggleFullScreen();">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="قفل" class="lock_btn">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="خروج" href="{% static "public/login.html" %}" >
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div> <!--left-col scroll-view -->
+         
+
+    </div> <!--col-md-3 left-col hidden-print-->         
+    
+    <!-- top navigation -->
+    <div class="top_nav hidden-print">
+        <div class="nav_menu">
+            <nav>
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+
+            </nav>
+        </div>
+    </div> <!-- /top navigation -->
+
+    <!-- /header content -->
+        
+        
+        
+    <div class="right_col" role="main">
+         
+   <div class="clearfix"></div>
+    
+    <!-- two column row -->
+    <div class="row">
+            <!-- form input mask -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>اصلاح مقادیر</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">تنظیمات 1</a>
+                                    </li>
+                                    <li><a href="#">تنظیمات 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br/>
+                         <form id="infoform" "data-parsley-validate" class="form-horizontal form-label-left"  autocomplete="off">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> وزن پر
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="loadedweight" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> وزن خالی
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="unloadedweight" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+
+                            </div>
+	
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> شناسه
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="nationalid" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vnumber"> شماره خودرو
+                                     <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12" style="display: flex;">
+
+                                <div class="col-md-3 col-sm-3 col-xs-12" style="display: inline-block; padding:0em;">
+                                    <input type="text" id="vid" name="vid" required="required" placeholder="11"
+                                           class="form-control col-md-7 col-xs-7">
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-12" style="display: inline-block; padding: 0em;">
+                                    <input type="text" id="vletter" name="vletter" required="required" placeholder="و"
+                                           class="form-control col-md-7 col-xs-7">
+                                </div>
+
+
+                                <div class="col-md-4 col-sm-4 col-xs-12" style="display: inline-block; padding:0em;">
+                                    <input type="text" id="vcode" name="vcode" required="required" placeholder="889"
+                                           class="form-control col-md-7 col-xs-7">
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-12" style="display: inline-block; padding:0em;">
+                                    <input type="text" id="vregion" name="vregion" required="required" placeholder="27"
+                                           class="form-control col-md-6 col-xs-12">
+                                </div>
+                              
+
+                                </div>
+                             
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname">  نام
+                                     <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="firstname" name="firstname" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname"> نام خانوادگی 
+                                     <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="lastname" name="lastname" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fathername"> نام پدر 
+                                     <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="fathername" name="fathername" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile"> موبایل 
+                                     <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="mobile" name="mobile" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drivername"> راننده
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="drivername" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                        
+                                <select class="form-control" id="vtype">
+                                </select>
+                    
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">نوع بار</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" id="loadtype">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bankaccount" class="control-label col-md-3 col-sm-3 col-xs-12"> شماره حساب
+                                     </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="bankaccount" class="form-control col-md-7 col-xs-12" type="text"
+                                           name="bankaccount">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location" class="control-label col-md-3 col-sm-3 col-xs-12"> مبدا/مقصد
+                                     </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12 autocomplete">
+                                    <input id="location" class="form-control col-md-7 col-xs-12" type="text"
+                                           name="location">
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <button type='button' onclick="cancel()" class="btn btn-primary">انصراف</button>
+                                    <button type="submit" onclick="register_edits()" class="btn btn-success">ثبت تغییرات</button>
+                                    <button type="submit" onclick="delete_from_temps()" class="btn btn-danger">حذف باسکول</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /form input mask -->
+
+           
+
+
+        </div> <!-- end of two column row -->
+    
+        
+    
+    </div> <!-- right_col main -->
+    
+    </div> <!-- main container -->
+</div>
+<!--container body -->
+
+
+
+
+
+<div id="lock_screen">
+    <table>
+        <tr>
+            <td>
+                <div class="clock"></div>
+                <span class="unlock">
+                    <span class="fa-stack fa-5x">
+                      <i class="fa fa-square-o fa-stack-2x fa-inverse"></i>
+                      <i id="icon_lock" class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- jQuery -->
+<script src="{% static 'vendors/jquery/dist/jquery.min.js' %}" ></script>
+<!-- Bootstrap -->
+<script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+<!-- FastClick -->
+<script src="{% static 'vendors/fastclick/lib/fastclick.js' %}" ></script>
+<!-- NProgress -->
+<script src="{% static 'vendors/nprogress/nprogress.js' %}" ></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}" ></script>
+<!-- iCheck -->
+<script src="{% static 'vendors/iCheck/icheck.min.js' %}" ></script>
+
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'vendors/moment/min/moment.min.js' %}" ></script>
+
+<script src="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.js' %}" ></script>
+
+<!-- Chart.js -->
+<script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}" ></script>
+<!-- jQuery Sparklines -->
+<script src="{% static 'vendors/jquery-sparkline/dist/jquery.sparkline.min.js' %}" ></script>
+<!-- gauge.js -->
+<script src="{% static 'vendors/gauge.js/dist/gauge.min.js' %}" ></script>
+<!-- Skycons -->
+<script src="{% static 'vendors/skycons/skycons.js' %}" ></script>
+<!-- Flot -->
+<script src="{% static 'vendors/Flot/jquery.flot.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.pie.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.time.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.stack.js' %}" ></script>
+<script src="{% static 'vendors/Flot/jquery.flot.resize.js' %}" ></script>
+<!-- Flot plugins -->
+<script src="{% static 'vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}" ></script>
+<script src="{% static 'vendors/flot-spline/js/jquery.flot.spline.min.js' %}" ></script>
+<script src="{% static 'vendors/flot.curvedlines/curvedLines.js' %}" ></script>
+<!-- DateJS -->
+<script src="{% static 'vendors/DateJS/build/production/date.min.js' %}" ></script>
+<!-- JQVMap -->
+<script src="{% static 'vendors/jqvmap/dist/jquery.vmap.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}" ></script>
+<script src="{% static 'vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}" ></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'build/js/custom.min.js' %}" ></script>
+
+
+<script type="text/javascript">
+$(document).ready(lajan.silo () {
+   var port = window.location.port || 8000;
+   $.ajax({
+    url:            'http://localhost:' + port + '/polls/initialization/',
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      var obj = JSON.parse(result);
+      for (var i=0;i<obj.loads.length;i++){
+          $("#loadtype").append("<option>" + obj.loads[i] + "</option>")
+      }
+      for (var i=0;i<obj.cars.length;i++){
+          $("#vtype").append("<option>" + obj.cars[i] + "</option>")
+      }
+    }
+  });
+  
+  
+   registeredvillages = [];
+   $.ajax({
+    url:            'http://localhost:' + port + '/polls/initlocations/',
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      var obj = JSON.parse(result);
+      for (var i=0;i<obj.villages.length;i++){
+          registeredvillages.push(obj.villages[i])
+      }
+
+    }
+  });
+              
+    myautocomplete(document.getElementById("location"), registeredvillages);
+
+
+
+
+   var url_string = window.location.href
+   
+   var code = url_string.split('/')[5];
+   var reciept = url_string.split('/')[7];
+   printtype = ""
+   if (reciept == "0"){
+       printtype = "edit_temp_invoice/"+code;
+   }
+   else {
+       printtype = 'edit_full_invoice/'+reciept;
+   }
+   var id = ""; 
+   $.ajax({
+    url:            'http://localhost:' + port + '/polls/' + printtype,
+    type:           'GET',
+    contentType:    'application/json; charset=utf-8',
+    dataType:       'json',
+    success: lajan.silo (result) {
+      document.getElementById('drivername').value = result.driver ;
+      document.getElementById('nationalid').value = result.id;
+      document.getElementById('firstname').value = result.fname;
+      document.getElementById('mobile').value = result.mobile;
+      document.getElementById('fathername').value = result.faname;
+      document.getElementById('bankaccount').value = result.bank;
+	  if (result.loadedweight.trim().length > 0)
+	  {
+			document.getElementById('loadedweight').value = result.loadedweight;
+	  }
+	  else
+	  {
+			var weightbox = document.getElementById('loadedweight');
+			weightbox.disabled = true;
+	  }	
+	  if (result.unloadedweight.trim().length > 0)
+	  {
+			document.getElementById('unloadedweight').value = result.unloadedweight;
+	  }
+	  else
+	  {
+			var weightbox = document.getElementById('unloadedweight');
+			weightbox.disabled = true;
+	  }	
+      
+	  document.getElementById('lastname').value = result.lname;
+	  document.getElementById('location').value = result.location;
+      $("#vletter").val(result.vletter);
+      $("#vcode").val(result.vcode);
+      $("#vid").val(result.vid);
+	  $("#vregion").val(result.vregion);
+
+    }
+  });
+  
+ 
+});
+
+
+lajan.silo myautocomplete(inp, arr) {
+  /*the autocomplete lajan.silo takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a lajan.silo when someone writes in the text field:*/
+  inp.addEventListener("input", lajan.silo(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a lajan.silo when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", lajan.silo(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a lajan.silo presses a key on the keyboard:*/
+  inp.addEventListener("keydown", lajan.silo(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  lajan.silo addActive(x) {
+    /*a lajan.silo to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  lajan.silo removeActive(x) {
+    /*a lajan.silo to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  lajan.silo closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a lajan.silo when someone clicks in the document:*/
+document.addEventListener("click", lajan.silo (e) {
+    closeAllLists(e.target);
+});
+} 
+
+
+
+
+
+lajan.silo cancel() {
+      window.close();
+  
+};
+
+
+lajan.silo delete_from_temps(){	
+
+    var vletter =  $("#vletter").val();
+    var vcode =   $("#vcode").val();
+    var vid =  $("#vid").val();
+	var vregion =  '(' + $("#vregion").val() + ')';
+
+   var url_string = window.location.href
+   var code = url_string.split('/')[5];
+   var reciept = url_string.split('/')[7];
+   deletetype = ""
+   if (reciept == "0"){
+       deletetype = "delete_from_temps/";
+       var vehicle = vregion + vcode + vletter + vid;
+	   var myEvent = {id: vehicle};
+   }
+   else {
+       deletetype = 'delete_full_invoice/';
+	   var myEvent = {id: reciept};
+   }
+
+     var port = window.location.port || 8000;
+	$.ajax({
+		url: 'http://localhost:' + port + '/polls/' + deletetype,
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+		async: false,
+		contentType: 'application/json',
+		data: JSON.stringify(myEvent),
+		success: lajan.silo (json) {
+			alert(json.msg);
+		},
+		errof: lajan.silo(xhr,errmsg,err){
+			alert(errmsg)
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
+	
+	window.close()
+    
+};
+
+lajan.silo register_edits(){
+
+   var url_string = window.location.href
+   var code = url_string.split('/')[5];
+   var reciept = url_string.split('/')[7];
+   edittype = ""
+   if (reciept == "0"){
+       edittype = "register_temp_edits/";
+   }
+   else {
+       edittype = 'register_full_edits/';
+   }
+
+
+    var vletter =  $("#vletter").val();
+    var vcode =   $("#vcode").val();
+    var vid =  $("#vid").val();
+	var vregion =  '(' + $("#vregion").val() + ')';
+    var vehicle = vregion + vcode + vletter + vid;
+	
+    var e = document.getElementById("loadtype");
+    var loadtype = e.options[e.selectedIndex].text;
+    
+    var e = document.getElementById("vtype");
+    var vtype = e.options[e.selectedIndex].text;
+	var port = window.location.port || 8000;
+	$.ajax({
+		url: 'http://localhost:' + port + '/polls/'+edittype,
+		type: 'POST',
+		dataType: 'json',
+		cache: false,
+		async: false,
+		contentType: 'application/json',
+		data: JSON.stringify({Reciept:reciept,loadedweight: $("#loadedweight").val(), unloadedweight: $("#unloadedweight").val(), ID: $("#nationalid").val(), Fname: $("#firstname").val(), Lname: $("#lastname").val(), Faname:$("#fathername").val(), Mobile:$("#mobile").val(), Bankacc:$("#bankaccount").val(), Driver:$("#drivername").val(), Vnumber:vehicle, Ltype:loadtype, Vtype:vtype, Location: $("#location").val()}),
+		success: lajan.silo (json) {
+			alert(json.msg);
+		},
+		errof: lajan.silo(xhr,errmsg,err){
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
+	
+	window.close()
+    
+};
+
+</script>
+
+
+</body>
+</html>
+    
