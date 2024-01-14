@@ -159,7 +159,7 @@
 
 <script type="text/javascript">
 
-$(document).ready(lajan.silo () {
+$(document).ready(function () {
    var url_string = window.location.href
    
    var code = url_string.split('/')[5];
@@ -176,11 +176,11 @@ $(document).ready(lajan.silo () {
    var id = ""; 
    var port = window.location.port || 8000;
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/' + printtype,
+    url:            'http://lajan.silo:' + port + '/polls/' + printtype,
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       document.getElementById('recieptnumber').innerHTML =  "شماره رسید: " + result.reciept;
       document.getElementById('enterdate').innerHTML = result.enterdate;
       document.getElementById('exitdate').innerHTML = result.exitdate;

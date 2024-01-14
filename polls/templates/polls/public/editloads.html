@@ -378,14 +378,14 @@
 
 
 <script type="text/javascript">
-$(document).ready(lajan.silo () {
+$(document).ready(function() {
    var port = window.location.port || 8000;
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/initialization/',
+    url:            'http://lajan.silo:' + port + '/polls/initialization/',
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function(result) {
       var obj = JSON.parse(result);
       for (var i=0;i<obj.loads.length;i++){
           $("#loadtype").append("<option>" + obj.loads[i] + "</option>")
@@ -399,11 +399,11 @@ $(document).ready(lajan.silo () {
   
    registeredvillages = [];
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/initlocations/',
+    url:            'http://lajan.silo:' + port + '/polls/initlocations/',
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       var obj = JSON.parse(result);
       for (var i=0;i<obj.villages.length;i++){
           registeredvillages.push(obj.villages[i])
@@ -430,11 +430,11 @@ $(document).ready(lajan.silo () {
    }
    var id = ""; 
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/' + printtype,
+    url:            'http://lajan.silo:' + port + '/polls/' + printtype,
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       document.getElementById('drivername').value = result.driver ;
       document.getElementById('nationalid').value = result.id;
       document.getElementById('firstname').value = result.fname;
@@ -474,12 +474,12 @@ $(document).ready(lajan.silo () {
 });
 
 
-lajan.silo myautocomplete(inp, arr) {
-  /*the autocomplete lajan.silo takes two arguments,
+function myautocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
-  /*execute a lajan.silo when someone writes in the text field:*/
-  inp.addEventListener("input", lajan.silo(e) {
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
@@ -502,8 +502,8 @@ lajan.silo myautocomplete(inp, arr) {
           b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a lajan.silo when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", lajan.silo(e) {
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
               /*close the list of autocompleted values,
@@ -514,8 +514,8 @@ lajan.silo myautocomplete(inp, arr) {
         }
       }
   });
-  /*execute a lajan.silo presses a key on the keyboard:*/
-  inp.addEventListener("keydown", lajan.silo(e) {
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
       if (e.keyCode == 40) {
@@ -539,8 +539,8 @@ lajan.silo myautocomplete(inp, arr) {
         }
       }
   });
-  lajan.silo addActive(x) {
-    /*a lajan.silo to classify an item as "active":*/
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
     if (!x) return false;
     /*start by removing the "active" class on all items:*/
     removeActive(x);
@@ -549,13 +549,13 @@ lajan.silo myautocomplete(inp, arr) {
     /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
-  lajan.silo removeActive(x) {
-    /*a lajan.silo to remove the "active" class from all autocomplete items:*/
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
-  lajan.silo closeAllLists(elmnt) {
+  function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
     var x = document.getElementsByClassName("autocomplete-items");
@@ -565,8 +565,8 @@ lajan.silo myautocomplete(inp, arr) {
     }
   }
 }
-/*execute a lajan.silo when someone clicks in the document:*/
-document.addEventListener("click", lajan.silo (e) {
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 } 
@@ -575,13 +575,13 @@ document.addEventListener("click", lajan.silo (e) {
 
 
 
-lajan.silo cancel() {
+function cancel() {
       window.close();
   
 };
 
 
-lajan.silo delete_from_temps(){	
+function delete_from_temps(){	
 
     var vletter =  $("#vletter").val();
     var vcode =   $("#vcode").val();
@@ -604,17 +604,17 @@ lajan.silo delete_from_temps(){
 
      var port = window.location.port || 8000;
 	$.ajax({
-		url: 'http://localhost:' + port + '/polls/' + deletetype,
+		url: 'http://lajan.silo:' + port + '/polls/' + deletetype,
 		type: 'POST',
 		dataType: 'json',
 		cache: false,
 		async: false,
 		contentType: 'application/json',
 		data: JSON.stringify(myEvent),
-		success: lajan.silo (json) {
+		success: function (json) {
 			alert(json.msg);
 		},
-		errof: lajan.silo(xhr,errmsg,err){
+		errof: function(xhr,errmsg,err){
 			alert(errmsg)
 			console.log(xhr.status + ": " + xhr.responseText);
 		}
@@ -624,7 +624,7 @@ lajan.silo delete_from_temps(){
     
 };
 
-lajan.silo register_edits(){
+function register_edits(){
 
    var url_string = window.location.href
    var code = url_string.split('/')[5];
@@ -651,17 +651,17 @@ lajan.silo register_edits(){
     var vtype = e.options[e.selectedIndex].text;
 	var port = window.location.port || 8000;
 	$.ajax({
-		url: 'http://localhost:' + port + '/polls/'+edittype,
+		url: 'http://lajan.silo:' + port + '/polls/'+edittype,
 		type: 'POST',
 		dataType: 'json',
 		cache: false,
 		async: false,
 		contentType: 'application/json',
 		data: JSON.stringify({Reciept:reciept,loadedweight: $("#loadedweight").val(), unloadedweight: $("#unloadedweight").val(), ID: $("#nationalid").val(), Fname: $("#firstname").val(), Lname: $("#lastname").val(), Faname:$("#fathername").val(), Mobile:$("#mobile").val(), Bankacc:$("#bankaccount").val(), Driver:$("#drivername").val(), Vnumber:vehicle, Ltype:loadtype, Vtype:vtype, Location: $("#location").val()}),
-		success: lajan.silo (json) {
+		success: function (json) {
 			alert(json.msg);
 		},
-		errof: lajan.silo(xhr,errmsg,err){
+		errof: function(xhr,errmsg,err){
 			console.log(xhr.status + ": " + xhr.responseText);
 		}
 	});

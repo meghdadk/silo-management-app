@@ -340,34 +340,34 @@
 
 <script type="text/javascript">
 
-document.getElementById('fileselect').onchange = lajan.silo () {
+document.getElementById('fileselect').onchange = function () {
   document.getElementById("fileselectlabel").innerHTML =  this.value.split('\\')[2];
 };
 
-lajan.silo gotodashboard(){
+function gotodashboard(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/","_self");
+window.open("http://lajan.silo:" + port + "/polls/","_self");
 }
 
-lajan.silo gotoreports(){
+function gotoreports(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/report_page/","_self");
+window.open("http://lajan.silo:" + port + "/polls/report_page/","_self");
 }
 
-lajan.silo gotouploads(){
+function gotouploads(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/upload_idphoto/","_self")
+window.open("http://lajan.silo:" + port + "/polls/upload_idphoto/","_self")
 }
 
-lajan.silo searchfactory() {
+function searchfactory() {
   var id = document.getElementById('factoryid').value
   var port = window.location.port || 8000;
   $.ajax({
-    url:            'http://localhost:' + port + '/polls/searchfactoryid/'+id.toString(),
+    url:            'http://lajan.silo:' + port + '/polls/searchfactoryid/'+id.toString(),
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       $("#factoryname").val(result.name);
       $("#address").val(result.address);
       $("#factoryphone").val(result.phone);
@@ -376,20 +376,20 @@ lajan.silo searchfactory() {
   });
 };
 
-lajan.silo register_factory(){
+function register_factory(){
 	var port = window.location.port || 8000;
 	$.ajax({
-		url: 'http://localhost:' + port + '/polls/register_factory/',
+		url: 'http://lajan.silo:' + port + '/polls/register_factory/',
 		type: 'POST',
 		dataType: 'json',
 		cache: false,
 		async: false,
 		contentType: 'application/json',
 		data: JSON.stringify({factoryid: $("#factoryid").val(), factoryname: $("#factoryname").val(), address: $("#address").val(), factoryphone: $("#factoryphone").val()}),
-		success: lajan.silo (json) {
+		success: function (json) {
 			alert(json.msg);
 		},
-		errof: lajan.silo(xhr,errmsg,err){
+		errof: function(xhr,errmsg,err){
 			console.log(xhr.status + ": " + xhr.responseText);
 		}
 	});
@@ -398,21 +398,21 @@ lajan.silo register_factory(){
     
 };
 
-lajan.silo edit_factory(){
+function edit_factory(){
 	var id = document.getElementById('factoryid').value;
 	var port = window.location.port || 8000;
 	$.ajax({
-		url: 'http://localhost:' + port + '/polls/edit_factory/',
+		url: 'http://lajan.silo:' + port + '/polls/edit_factory/',
 		type: 'POST',
 		dataType: 'json',
 		cache: false,
 		async: false,
 		contentType: 'application/json',
 		data: JSON.stringify({factoryid: $("#factoryid").val(), factoryname: $("#factoryname").val(), address: $("#address").val(), factoryphone: $("#factoryphone").val()}),
-		success: lajan.silo (json) {
+		success: function (json) {
 			alert(json.msg);
 		},
-		errof: lajan.silo(xhr,errmsg,err){
+		errof: function(xhr,errmsg,err){
 			console.log(xhr.status + ": " + xhr.responseText);
 		}
 	});
@@ -420,7 +420,7 @@ lajan.silo edit_factory(){
     
 };
 
-$(document).ready(lajan.silo () {var i;})
+$(document).ready(function () {var i;})
 
 </script>
 

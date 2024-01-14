@@ -1,4 +1,4 @@
-lajan.silo search(){
+function search(){
     $("#resultstablebody").empty();
     var id =  $("#nationalid").val();
     var invoice =  $("#invoiceid").val();
@@ -28,12 +28,12 @@ lajan.silo search(){
 	//dic = JSON.stringify({Vregion:vregion, Vid:vid, Fname: firstname, Lname: lastname, Vnumber:vnumber, Ltype:loadtype, Vtype:vtype, Date1:date1, Date2:date2});
 	dic = JSON.stringify({ ID: id,Invoice: invoice, Driver:driver, Location:loc, Fname: firstname, Lname: lastname, Vnumber:vnumber, Ltype:loadtype, Vtype:vtype, InOut:invoicetype,Date1:date1, Date2:date2});
     $.ajax({
-        url: 'http://localhost:' + port + '/polls/report_search/',
+        url: 'http://lajan.silo:' + port + '/polls/report_search/',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
         data: dic,
-    success: lajan.silo (result) {
+    success: function (result) {
 		if (result.status == "false"){
 			alert(result.msg)
 		}
@@ -103,7 +103,7 @@ lajan.silo search(){
 
 }
 
-lajan.silo groupreport(type){
+function groupreport(type){
     $("#groupreportbody").empty();
     var date1 =  $("#groupdatestart").val();
     var date2 =  $("#groupdatestop").val();
@@ -121,12 +121,12 @@ lajan.silo groupreport(type){
 	//dic = JSON.stringify({Vregion:vregion, Vid:vid, Fname: firstname, Lname: lastname, Vnumber:vnumber, Ltype:loadtype, Vtype:vtype, Date1:date1, Date2:date2});
 	dic = JSON.stringify({ Ltype:loadtype, InOut:invoicetype,Date1:date1, Date2:date2, Type:type});
     $.ajax({
-        url: 'http://localhost:' + port + '/polls/group_report_search/',
+        url: 'http://lajan.silo:' + port + '/polls/group_report_search/',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
         data: dic,
-    success: lajan.silo (result) {
+    success: function (result) {
 		if (result.status == "false"){
 			alert(result.msg)
 		}
@@ -172,7 +172,7 @@ lajan.silo groupreport(type){
 
 }
 
-lajan.silo edit_report(){	
+function edit_report(){	
     var tbl = document.getElementById("resultstablebody");
 	var port = window.location.port || 8000;
     for (var i =0; row=tbl.rows[i]; i++)
@@ -183,7 +183,7 @@ lajan.silo edit_report(){
 			var carid = row.cells[3].innerText;
 			var id = row.cells[4].innerText;
 
-			url = 'http://localhost:' + port + '/polls/editloads/' + carid + '/' + id + '/' + reciept;
+			url = 'http://lajan.silo:' + port + '/polls/editloads/' + carid + '/' + id + '/' + reciept;
 			window.open(url,'1', "windowFeatures");
             
         }
@@ -193,7 +193,7 @@ lajan.silo edit_report(){
     
 };
 
-lajan.silo print_report(carid, id, reciept){
+function print_report(carid, id, reciept){
     
     var tbl = document.getElementById("resultstablebody");
     var alls = '';
@@ -206,7 +206,7 @@ lajan.silo print_report(carid, id, reciept){
             var carid = row.cells[3].innerText;
             var id = row.cells[4].innerText;
 
-            url = 'http://localhost:' + port + '/polls/print/' + carid + '/' + id + '/' + reciept;
+            url = 'http://lajan.silo:' + port + '/polls/print/' + carid + '/' + id + '/' + reciept;
             window.open(url,reciept,"windowFeatures");
         
         }
@@ -215,29 +215,29 @@ lajan.silo print_report(carid, id, reciept){
 }
 
 
-lajan.silo gotodashboard(){
+function gotodashboard(){
 	var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/","_self")
+window.open("http://lajan.silo:" + port + "/polls/","_self")
 }
 
-lajan.silo gotouploads(){
+function gotouploads(){
 	var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/upload_idphoto/","_self")
+window.open("http://lajan.silo:" + port + "/polls/upload_idphoto/","_self")
 }
 
-lajan.silo gotoregfactory(){
+function gotoregfactory(){
 	var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/register_factories/","_self");
+window.open("http://lajan.silo:" + port + "/polls/register_factories/","_self");
 }
 
-$(document).ready(lajan.silo () {
+$(document).ready(function () {
 var port = window.location.port || 8000;
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/initialization/',
+    url:            'http://lajan.silo:' + port + '/polls/initialization/',
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       var obj = JSON.parse(result);
       for (var i=0;i<obj.loads.length;i++){
           $("#loadtype").append("<option>" + obj.loads[i] + "</option>")
@@ -252,11 +252,11 @@ var port = window.location.port || 8000;
 
    registeredvillages = [];
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/initlocations/',
+    url:            'http://lajan.silo:' + port + '/polls/initlocations/',
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       var obj = JSON.parse(result);
       for (var i=0;i<obj.villages.length;i++){
           registeredvillages.push(obj.villages[i])
@@ -272,12 +272,12 @@ var port = window.location.port || 8000;
 })
 
 
-lajan.silo myautocomplete(inp, arr) {
-  /*the autocomplete lajan.silo takes two arguments,
+function myautocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
-  /*execute a lajan.silo when someone writes in the text field:*/
-  inp.addEventListener("input", lajan.silo(e) {
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
@@ -300,8 +300,8 @@ lajan.silo myautocomplete(inp, arr) {
           b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a lajan.silo when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", lajan.silo(e) {
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
               /*close the list of autocompleted values,
@@ -312,8 +312,8 @@ lajan.silo myautocomplete(inp, arr) {
         }
       }
   });
-  /*execute a lajan.silo presses a key on the keyboard:*/
-  inp.addEventListener("keydown", lajan.silo(e) {
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
       if (e.keyCode == 40) {
@@ -337,8 +337,8 @@ lajan.silo myautocomplete(inp, arr) {
         }
       }
   });
-  lajan.silo addActive(x) {
-    /*a lajan.silo to classify an item as "active":*/
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
     if (!x) return false;
     /*start by removing the "active" class on all items:*/
     removeActive(x);
@@ -347,13 +347,13 @@ lajan.silo myautocomplete(inp, arr) {
     /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
-  lajan.silo removeActive(x) {
-    /*a lajan.silo to remove the "active" class from all autocomplete items:*/
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
-  lajan.silo closeAllLists(elmnt) {
+  function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
     var x = document.getElementsByClassName("autocomplete-items");
@@ -363,8 +363,8 @@ lajan.silo myautocomplete(inp, arr) {
     }
   }
 }
-/*execute a lajan.silo when someone clicks in the document:*/
-document.addEventListener("click", lajan.silo (e) {
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 } 
@@ -373,7 +373,7 @@ document.addEventListener("click", lajan.silo (e) {
 
 
 
-lajan.silo cancel() {
+function cancel() {
   $("#nationalid").val('');
   $("#invoiceid").val('');
   $("#firstname").val('');
@@ -390,13 +390,13 @@ lajan.silo cancel() {
 };
 
 
-lajan.silo clearresults() {
+function clearresults() {
   //$("#resultstablebody").empty();
      location.reload();
 
 };
 
-lajan.silo cleargroupresults() {
+function cleargroupresults() {
   //$("#groupreportbody").empty();
   location.reload();
   
@@ -404,12 +404,12 @@ lajan.silo cleargroupresults() {
 
 
 
-lajan.silo exportExcel(tableText, filename, worksheetName) {
+function exportExcel(tableText, filename, worksheetName) {
         let downloadLink = document.createElement("a");
         let uri = 'data:application/vnd.ms-excel;base64,'
             , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body>' + tableText + '</body></html>'
-            , base64 = lajan.silo (s) { return window.btoa(unescape(encodeURIComponent(s))) }
-            , format = lajan.silo (s, c) { return s.replace(/{(\w+)}/g, lajan.silo (m, p) { return c[p]; }) }
+            , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function (s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
 
         let ctx = { worksheet: worksheetName || 'Worksheet', table: tableText }
         // window.location.href = uri + base64(format(template, ctx));
@@ -421,7 +421,7 @@ lajan.silo exportExcel(tableText, filename, worksheetName) {
         document.body.removeChild(downloadLink);
     }
 
-lajan.silo fnExcelReport(tableid){	
+function fnExcelReport(tableid){	
     var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
     var textRange; var j=0;
     tab = document.getElementById(tableid); // id of table
@@ -440,7 +440,7 @@ lajan.silo fnExcelReport(tableid){
 
 }
 
-lajan.silo printresults() {
+function printresults() {
 	var divToPrint=document.getElementById("recentloadsdiv");
 	var htmlToPrint = '' +
 	'<style type="text/css">' +
@@ -507,7 +507,7 @@ lajan.silo printresults() {
 	newWin.close();
 }
 
-lajan.silo groupprintresults() {
+function groupprintresults() {
    var divToPrint=document.getElementById("groupreportbody");
       var htmlToPrint = '' +
         '<style type="text/css">' +

@@ -325,41 +325,41 @@
 
 <script type="text/javascript">
 
-document.getElementById('fileselect').onchange = lajan.silo () {
+document.getElementById('fileselect').onchange = function () {
   document.getElementById("fileselectlabel").innerHTML =  this.value.split('\\')[2];
 };
 
-lajan.silo gotodashboard(){
+function gotodashboard(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/","_self");
+window.open("http://lajan.silo:" + port + "/polls/","_self");
 }
 
-lajan.silo gotoreports(){
+function gotoreports(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/report_page/","_self");
+window.open("http://lajan.silo:" + port + "/polls/report_page/","_self");
 }
 
-lajan.silo gotoregfactory(){
+function gotoregfactory(){
 var port = window.location.port || 8000;
-window.open("http://localhost:" + port + "/polls/register_factories/","_self");
+window.open("http://lajan.silo:" + port + "/polls/register_factories/","_self");
 }
 
-lajan.silo search(){
+function search(){
    id = document.getElementById("nationalid").value;
     var port = window.location.port || 8000;
     $.ajax({
         type:'GET',
-        url: 'http://localhost:' + port + '/polls/search_idphoto/' + id,
+        url: 'http://lajan.silo:' + port + '/polls/search_idphoto/' + id,
 		contentType: "multipart/form-data",
 		cache: false,
-        success: lajan.silo(response){
+        success: function(response){
             $("#idphoto").attr('src', 'data:image/png;base64,' + response);
         },
     });
  
 }
 	
-lajan.silo uploading() {
+function uploading() {
 
     var form_data = new FormData();
     var image = document.getElementById('fileselect').files[0];
@@ -367,15 +367,15 @@ lajan.silo uploading() {
     var port = window.location.port || 8000;
     $.ajax({
         type:'POST',
-        url: 'http://localhost:' + port + '/polls/get_idphoto/',
+        url: 'http://lajan.silo:' + port + '/polls/get_idphoto/',
 		contentType: "multipart/form-data",
 		cache: false,
 		contentType: false,
 		processData: false,
 		data: form_data,
-        success: lajan.silo(response){
+        success: function(response){
         if(response.error){
-				$.each(response.errors, lajan.silo(name, error){
+				$.each(response.errors, function(name, error){
 					error = '<small class="text-muted error">' + error + '</small>'
 					$form.find('[name=' + name + ']').after(error);
 				})
@@ -392,27 +392,27 @@ lajan.silo uploading() {
 
 
 
-$(document).ready(lajan.silo () {var i;})
+$(document).ready(function () {var i;})
 
 </script>
 
 
 <script type="text/javascript">
 // form upload
-$('#id_ajax_upload_form11').submit(lajan.silo(e){
+$('#id_ajax_upload_form11').submit(function(e){
 	e.preventDefault();
 	$form = $(this)
 	var formData = new FormData(this);
 	var port = window.location.port || 8000;
 	$.ajax({
-		url: 'http://localhost:' + port + '/polls/get_idphoto/',
+		url: 'http://lajan.silo:' + port + '/polls/get_idphoto/',
 		type: 'POST',
 		data: formData,
-		success: lajan.silo (response) {
+		success: function (response) {
 			$('.error').remove();
 			console.log(response)
 			if(response.error){
-				$.each(response.errors, lajan.silo(name, error){
+				$.each(response.errors, function(name, error){
 					error = '<small class="text-muted error">' + error + '</small>'
 					$form.find('[name=' + name + ']').after(error);
 				})

@@ -155,7 +155,7 @@
 
 <script type="text/javascript">
 
-$(document).ready(lajan.silo () {
+$(document).ready(function () {
    var url_string = window.location.href
    
    var id = url_string.split('/')[5];
@@ -166,11 +166,11 @@ $(document).ready(lajan.silo () {
    var port = window.location.port || 8000;
    var id = ""; 
    $.ajax({
-    url:            'http://localhost:' + port + '/polls/getfastresults/' + id + '/' + carid + '/' + name,
+    url:            'http://lajan.silo:' + port + '/polls/getfastresults/' + id + '/' + carid + '/' + name,
     type:           'GET',
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
-    success: lajan.silo (result) {
+    success: function (result) {
       document.getElementById('recieptnumber').innerHTML =  "شماره رسید: " + result.reciept;
       document.getElementById('enterdate').innerHTML = result.enterdate;
       document.getElementById('exitdate').innerHTML = result.exitdate;
