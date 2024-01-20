@@ -1479,10 +1479,8 @@ def print_other_invoice(request,carid):
     cursor = conn.cursor()
     query_string =  "select * from dbo.OtherLoadings where VehicleNumber = N'{}' ".format(carid)
     cursor.execute(query_string)
-    print (query_string)
     data = {}
     for row in cursor.fetchall():
-        print (row)
         for i,itm in enumerate(row):
             if itm == None: 
                 row[i] = ''
